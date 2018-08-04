@@ -1,6 +1,9 @@
 /*
  * Create a list that holds all of your cards
  */
+let card = document.getElementsByClassName("card");
+let cards = [...card];
+let openCards = [];
 
 
 /*
@@ -36,3 +39,28 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+
+function displayCard() {
+    this.classList.toggle("open");
+    this.classList.toggle("show");
+    this.classList.toggle("disabled");
+
+ }
+ 
+ function openCard(){
+    console.log(this.type);
+    openCards.push(this);
+   
+    // if (openCards.length === 2) {
+        
+    // }
+
+ }
+
+ // My Listeners
+ for (var i = 0; i < cards.length; i++){
+    cards[i].addEventListener("click", displayCard);
+    cards[i].addEventListener("click", openCard);
+  };
+ 
