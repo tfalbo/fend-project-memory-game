@@ -1,6 +1,4 @@
-/*
- * Create a list that holds all of your cards
- */
+// Variables for cards and lists
 let card = document.getElementsByClassName("card");
 let cards = [...card];
 let openCards = [];
@@ -31,19 +29,8 @@ function shuffle(array) {
 }
 
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
 
-
-
+// Display cards when clicked.
 function displayCard() {
     this.classList.toggle("open");
     this.classList.toggle("show");
@@ -51,23 +38,28 @@ function displayCard() {
 
  }
 
- function resetCounter(){
+// Resets move counter
+function resetCounter(){
     moveCount = 0;
     counter.innerHTML = moveCount;
- }
- function moveCounter(){
+}
+
+ // Increments move counter
+function moveCounter(){
     moveCount++;
     counter.innerHTML = moveCount;
- }
+}
 
- function lockCards(){
+// Lock matched cards
+function lockCards(){
     for(i=0;i<2;i++){
         openCards[i].classList.add("match");
         openCards[i].classList.remove("show", "open");
     }
     openCards = [];
- }
+}
 
+// Hides unmatched cards
  function hideCards(){
     for(i=0;i<2;i++){
         openCards[i].classList.remove("show", "open");
@@ -75,12 +67,14 @@ function displayCard() {
     openCards = [];
  }
  
+// Matches cards
 function matchCards() {
     matchedCards.push.apply(matchedCards,openCards);
     lockCards();
 }
 
- function openCard() {
+// Opens cards
+function openCard() {
     openCards.push(this);
     var len = openCards.length;
     if(len === 2){
@@ -91,22 +85,24 @@ function matchCards() {
         }
         moveCounter();
     }
- }
+}
 
- document.body.onload = startGame();
+document.body.onload = startGame();
 
- function startGame(){
+// Starts game
+function startGame(){
      resetCounter();
      cards = shuffle(cards);
- }
+}
 
+// Finishes games
 function finishGame(){
     if(matchedCards.length === 16){
         startGame();
     }
 }
 
- // My Listeners
+ // Listeners for Events
  for (var i = 0; i < cards.length; i++){
     cards[i].addEventListener("click", displayCard);
     cards[i].addEventListener("click", openCard);
