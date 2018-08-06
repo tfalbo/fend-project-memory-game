@@ -1,6 +1,7 @@
 // Variables for cards and lists
 let card = document.getElementsByClassName("card");
 let cards = [...card];
+const cardsList = document.getElementById("cardsList");
 let openCards = [];
 let matchedCards = [];
 let moveCount = 0;
@@ -89,10 +90,17 @@ function openCard() {
 
 document.body.onload = startGame();
 
-// Starts game
+// Starts game and apply shuffled cards
 function startGame(){
      resetCounter();
      cards = shuffle(cards);
+     cardsList.innerHTML = "";
+     for (var i = 0; i < cards.length; i++){
+        [].forEach.call(cards, function(item) {
+            cardsList.appendChild(item);
+        });
+        cards[i].classList.remove("show", "open", "match");
+    }
 }
 
 // Finishes games
