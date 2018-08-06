@@ -77,8 +77,7 @@ function matchCards() {
 // Opens cards
 function openCard() {
     openCards.push(this);
-    var len = openCards.length;
-    if(len === 2){
+    if(openCards.length === 2){
         if(openCards[0].type === openCards[1].type){
             matchCards();
         } else {
