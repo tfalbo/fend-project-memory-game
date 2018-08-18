@@ -7,6 +7,15 @@ let matchedCards = [];
 let moveCount = 0;
 let counter = document.querySelector(".moves");
 
+
+//Timer
+var timer = new Timer();
+timer.start();
+timer.addEventListener('secondsUpdated', function (e) {
+    document.getElementById("gameTimer").innerHTML(timer.getTimeValues().toString());
+});
+
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -91,7 +100,8 @@ document.body.onload = startGame();
 
 // Starts game and apply shuffled cards
 function startGame(){
-     resetCounter();
+     resetCounter(); // Reset Move Counter
+     timer.reset(); // Reset Timer
      cards = shuffle(cards);
      cardsList.innerHTML = "";
      for (var i = 0; i < cards.length; i++){
