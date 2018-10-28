@@ -7,7 +7,6 @@ let matchedCards = [];
 let moveCount = 0;
 let counter = document.querySelector(".moves");
 
-
 //Timer
 let timer = new Timer();
 timer.start();
@@ -26,7 +25,6 @@ timer.addEventListener('secondsUpdated', function (e) {
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -45,7 +43,6 @@ function displayCard() {
     this.classList.toggle("open");
     this.classList.toggle("show");
     this.classList.toggle("disabled");
-
  }
 
 // Resets move counter
@@ -85,12 +82,11 @@ function matchCards() {
 
 // Opens cards
 function openCard() {
-    openCards.push(this);
     if(openCards.length === 2){
         if(openCards[0].type === openCards[1].type){
             matchCards();
         } else {
-            hideCards();
+            setTimeout(hideCards(), 2000); 
         }
         moveCounter();
     }
