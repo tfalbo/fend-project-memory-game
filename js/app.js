@@ -9,10 +9,10 @@ let counter = document.querySelector(".moves");
 
 
 //Timer
-var timer = new Timer();
+let timer = new Timer();
 timer.start();
 timer.addEventListener('secondsUpdated', function (e) {
-    document.getElementById("gameTimer").innerHTML(timer.getTimeValues().toString());
+    document.getElementById("gameTimer").innerHTML = timer.getTimeValues().toString();
 });
 
 
