@@ -88,17 +88,17 @@ function openCard() {
     if(openCards.length < 2){
         openCards.push(this);
     }
-    else {
-        // Compare cards if two of them are open
-        setTimeout(function() {
-                if(openCards[0].type === openCards[1].type){
-                    matchCards();
-                } else {
-                    hideCards();
-                }
-                moveCounter();
-        }, 500);
-    }
+    setTimeout(function() {
+        if(openCards.length === 2){
+            if(openCards[0].type === openCards[1].type){
+                matchCards();
+            } else {
+                hideCards();
+            }
+            moveCounter();
+        }
+    }, 1000);
+    
 }
 
 document.body.onload = startGame();
