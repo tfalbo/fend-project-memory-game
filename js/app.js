@@ -6,6 +6,7 @@ let openCards = [];
 let matchedCards = [];
 let moveCount = 0;
 let counter = document.querySelector(".moves");
+let numStars = 3;
 
 
 //Timer
@@ -48,16 +49,27 @@ function displayCard() {
 
  }
 
+// Check Stars
+function checkStars (){
+    if (moveCount >= 1) {
+        let starsList = document.getElementsByClassName("stars");
+        starsList.innerHTML = '';
+        console.log(starsList);
+    } 
+}
+
 // Resets move counter
 function resetCounter(){
     moveCount = 0;
     counter.innerHTML = moveCount;
 }
 
+
  // Increments move counter
 function moveCounter(){
     moveCount++;
     counter.innerHTML = moveCount;
+    checkStars();
 }
 
 // Lock matched cards
