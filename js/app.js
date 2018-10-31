@@ -48,17 +48,28 @@ function displayCard() {
 
 // Check Stars
 function checkStars (){
-    if (moveCount >= 1) {
-        let starsList = document.getElementsByClassName("stars");
-        starsList.innerHTML = '';
-        console.log(starsList);
+    let starsLi = document.getElementsByClassName("stars")[0];
+    if (moveCount == 5) {
+        starsLi.childNodes[5].classList.toggle("star-hidden");
+    }
+    if (moveCount == 10) {
+        starsLi.childNodes[3].classList.toggle("star-hidden");
     } 
+    if (moveCount == 15) {
+        starsLi.childNodes[1].classList.toggle("star-hidden");
+    } 
+    if (moveCount == 0){
+        starsLi.childNodes[5].classList.remove("star-hidden");
+        starsLi.childNodes[3].classList.remove("star-hidden");
+        starsLi.childNodes[1].classList.remove("star-hidden");
+    }
 }
 
 // Resets move counter
 function resetCounter(){
     moveCount = 0;
     counter.innerHTML = moveCount;
+    checkStars();
 }
 
 
