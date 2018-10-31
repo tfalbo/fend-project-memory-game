@@ -6,6 +6,7 @@ let openCards = [];
 let matchedCards = [];
 let moveCount = 0;
 let counter = document.querySelector(".moves");
+let numStars = 3;
 
 //Timer
 let timer = new Timer();
@@ -45,16 +46,27 @@ function displayCard() {
     this.classList.toggle("disabled");
  }
 
+// Check Stars
+function checkStars (){
+    if (moveCount >= 1) {
+        let starsList = document.getElementsByClassName("stars");
+        starsList.innerHTML = '';
+        console.log(starsList);
+    } 
+}
+
 // Resets move counter
 function resetCounter(){
     moveCount = 0;
     counter.innerHTML = moveCount;
 }
 
+
  // Increments move counter
 function moveCounter(){
     moveCount++;
     counter.innerHTML = moveCount;
+    checkStars();
 }
 
 // Lock matched cards
@@ -82,14 +94,20 @@ function matchCards() {
 
 // Opens cards
 function openCard() {
-    if(openCards.length === 2){
-        if(openCards[0].type === openCards[1].type){
-            matchCards();
-        } else {
-            setTimeout(hideCards(), 2000); 
-        }
-        moveCounter();
+    if(openCards.length < 2){
+        openCards.push(this);
     }
+    setTimeout(function() {
+        if(openCards.length === 2){
+            if(openCards[0].type === openCards[1].type){
+                matchCards();
+            } else {
+                hideCards();
+            }
+            moveCounter();
+        }
+    }, 1000);
+    
 }
 
 document.body.onload = startGame();
