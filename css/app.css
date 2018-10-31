@@ -111,3 +111,65 @@ h1 {
 .star-hidden {
     visibility: hidden;
 }
+
+
+/* Modal */
+/* https://codepen.io/reidark/pen/FEueH */
+
+
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(52, 73, 94, 0.8);
+    z-index: 50;
+    visibility: hidden;
+    
+    opacity: 0.6;
+    
+    transition: 0.7s;
+  }
+
+.modal {
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    width: 400px;
+    height: 300px;
+    margin-left: -200px;
+    margin-top: -150px;
+    padding: 8%;
+
+    background: #fff;
+    z-index: 100;
+    visibility: hidden;
+
+    opacity: 0;
+
+    transition: 0.5s ease-out;
+
+    transform: translateY(45px);
+
+    text-align: center;
+    
+
+}
+
+
+/* Class Active */
+
+.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* When active class is added, that affects the modal class */
+
+.active + .modal {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
