@@ -108,6 +108,22 @@ h1 {
     cursor: pointer;
 }
 
-.star-hidden {
+.hidden {
     visibility: hidden;
+}
+
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    padding: 5%;
+    background-color: white;
+    border: 1px solid turquoise;
+    border-radius: 20px;
+
+    text-align: center;
 }

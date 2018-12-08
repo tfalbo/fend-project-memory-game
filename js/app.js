@@ -6,7 +6,10 @@ let openCards = [];
 let matchedCards = [];
 let moveCount = 0;
 let counter = document.querySelector(".moves");
-let numStars = 3;
+let modal = document.getElementsByClassName("modal");
+let starCount = 3;
+let modalStars = document.getElementsByClassName("score_stars");
+let modalTime = document.getElementsByClassName("score_time");
 
 //Timer
 let timer = new Timer();
@@ -50,18 +53,28 @@ function displayCard() {
 function checkStars (){
     let starsLi = document.getElementsByClassName("stars")[0];
     if (moveCount == 5) {
-        starsLi.childNodes[5].classList.toggle("star-hidden");
+        starsLi.childNodes[5].classList.toggle("hidden");
+        starCount = 2;
+        modalStars.innerHTML = '<i class="fa fa-star"></i><i class="fa fa-star"></i>';
     }
     if (moveCount == 10) {
-        starsLi.childNodes[3].classList.toggle("star-hidden");
+        starsLi.childNodes[3].classList.toggle("hidden");
+        starCount = 1;
+        modalStars.innerHTML = '<i class="fa fa-star"></i>';
+
     } 
     if (moveCount == 15) {
-        starsLi.childNodes[1].classList.toggle("star-hidden");
+        starsLi.childNodes[1].classList.toggle("hidden");
+        starCount = 0;
+        modalStars.innerHTML = '';
+
     } 
     if (moveCount == 0){
-        starsLi.childNodes[5].classList.remove("star-hidden");
-        starsLi.childNodes[3].classList.remove("star-hidden");
-        starsLi.childNodes[1].classList.remove("star-hidden");
+        starsLi.childNodes[5].classList.remove("hidden");
+        starsLi.childNodes[3].classList.remove("hidden");
+        starsLi.childNodes[1].classList.remove("hidden");
+        starCount = 3;
+        modalStars.innerHTML = '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
     }
 }
 
@@ -137,10 +150,19 @@ function startGame(){
     }
 }
 
+function showModal() {
+    modalTime.innerHTML = document.getElementById("gameTimer").innerHTML;
+    modal[0].classList.remove("hidden");
+}
+
+function closeModal() {
+    modal[0].classList.add("hidden");
+}
+
 // Finishes games
-function finishGame(){
+function finishGame() {
     if(matchedCards.length === 16){
-        startGame();
+        showModal();
     }
 }
 
